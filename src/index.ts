@@ -50,7 +50,7 @@ app.use(function notFound(
 });
 
 const ENVIRONMENT: string = app.get("env");
-const PORT = 5000;
+const PORT = 8008;
 // Listen on Port
 app.listen(PORT, function connectionListener() {
   console.log(
