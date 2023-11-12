@@ -1,15 +1,23 @@
 import { DataSource } from "typeorm";
 
-export const appDataSource = new DataSource({
-  // ... options
-});
+import dbConfig from "./config/ormconfig";
 
-const main = async () => {
-  console.time("main");
+export const appDataSource = new DataSource(dbConfig);
+
+const connect = async () => {
+  console.time("Time to connect to db");
   await appDataSource.initialize();
 };
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+connect()
+  .then(() => {
+    console.clear();
+    console.timeEnd("Time to connect to db");
+    console.log("connected to db!");
+  })
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+
+export default { appDataSource, connect };

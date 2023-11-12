@@ -1,17 +1,16 @@
-import { DataSource } from "typeorm";
+import server from "../server";
 import { Course } from "../models/course.model";
 
 export class CourseService {
-  dataSource: DataSource = new DataSource();
-
+  dataSource = server.appDataSource;
   private courseRepository = this.dataSource.getRepository(Course);
 
   async getAllCourses(): Promise<Course[]> {
     return this.courseRepository.find();
   }
 
-  async getCourseById(courseId: number): Promise<Course | undefined> {
-    return this.courseRepository.findOne(courseId);
+  async getCourseById(courseId: number): Promise<Course | null> {
+    return this.courseRepository.findOne({ where: { course_id: courseId } });
   }
 
   async createCourse(newCourseData: Partial<Course>): Promise<Course> {
@@ -33,6 +32,6 @@ export class CourseService {
 
   async deleteCourse(courseId: number): Promise<boolean> {
     const deleteResult = await this.courseRepository.delete(courseId);
-    return deleteResult.affected !== undefined && deleteResult.affected > 0;
+    return deleteResult.affected != null && deleteResult.affected > 0;
   }
 }

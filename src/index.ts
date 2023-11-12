@@ -13,11 +13,15 @@ import chalk from "chalk";
 import cors from "cors";
 import timeout from "connect-timeout";
 
+import server from "./server";
 import router from "./api/index";
 
 dotenv.config();
 
 const app = express();
+
+// creates connection with database
+server.connect();
 
 app.use(cors());
 
@@ -50,8 +54,9 @@ app.use(function notFound(
 });
 
 const ENVIRONMENT: string = app.get("env");
-const PORT = 8008;
 // Listen on Port
+const PORT = 8008;
+
 app.listen(PORT, function connectionListener() {
   console.log(
     chalk.green.italic(

@@ -1,6 +1,6 @@
 import { type Express } from "express";
-import authRoutes from "./routes/*.routes";
+import courseRoutes from "./routes/course.routes";
 
 export default function initRoutes(app: Express): void {
-  app.use("/*", authRoutes);
+  app.use("/course", courseRoutes);
 }
