@@ -30,7 +30,7 @@ app.use(function notFound(err, req, res, next) {
     return res.json({ message: err.message });
 });
 const ENVIRONMENT = app.get("env");
-const PORT = 5000;
+const PORT = 8008;
 // Listen on Port
 app.listen(PORT, function connectionListener() {
     console.log(chalk_1.default.green.italic(`Hi there! I'm listening on port ${PORT} in ${ENVIRONMENT} mode.`));
