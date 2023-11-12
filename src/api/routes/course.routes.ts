@@ -4,10 +4,12 @@ import courseController from "../../controller/course.controller";
 
 const router = Router();
 
+router.get("/healthcheck", courseController.healthCheck);
+
 /**
  * Client Signup Routes
  */
-router.get("/healthcheck", courseController.healthCheck);
+router.post("/create", courseController.createCourse);
 
 router.get("/get-one/:courseID", courseController.getOneCourse);
 
