@@ -247,6 +247,6 @@ export default {
   createStudent,
   getOneStudent,
   getStudentPaginated,
-  updateStudent,
+  //   updateStudent,
   deleteOneStudent,
 };

@@ -2,7 +2,7 @@ import { DataSource } from "typeorm";
 
 import dbConfig from "./config/ormconfig";
 
-export const appDataSource = new DataSource(dbConfig);
+export const appDataSource = new DataSource(dbConfig.dataSourceOptionsMongoDB);
 
 const connect = async () => {
   console.time("Time to connect to db");

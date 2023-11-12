@@ -12,9 +12,12 @@ const express_1 = __importDefault(require("express"));
 const chalk_1 = __importDefault(require("chalk"));
 const cors_1 = __importDefault(require("cors"));
 const connect_timeout_1 = __importDefault(require("connect-timeout"));
+const server_1 = __importDefault(require("./server"));
 const index_1 = __importDefault(require("./api/index"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
+// creates connection with database
+server_1.default.connect();
 app.use((0, cors_1.default)());
 app.use((0, connect_timeout_1.default)("20s"));
 app.use(function (req, res, next) {
@@ -30,8 +33,8 @@ app.use(function notFound(err, req, res, next) {
     return res.json({ message: err.message });
 });
 const ENVIRONMENT = app.get("env");
-const PORT = 8008;
 // Listen on Port
+const PORT = 8008;
 app.listen(PORT, function connectionListener() {
     console.log(chalk_1.default.green.italic(`Hi there! I'm listening on port ${PORT} in ${ENVIRONMENT} mode.`));
 });

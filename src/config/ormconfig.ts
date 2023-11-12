@@ -1,6 +1,6 @@
 import { DataSourceOptions } from "typeorm";
 
-const dataSourceOptions: DataSourceOptions = {
+const dataSourceOptionsPG: DataSourceOptions = {
   type: "postgres",
   host: "localhost",
   port: 5432,
@@ -14,4 +14,17 @@ const dataSourceOptions: DataSourceOptions = {
   subscribers: ["src/subscribers/**/*.ts"],
 };
 
-export default dataSourceOptions;
+const dataSourceOptionsMongoDB: DataSourceOptions = {
+  type: "mongodb",
+  url: "mongodb+srv://shega-college:4915vi2ou6DZqK8Y@cluster0.zzn47w0.mongodb.net/college",
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  synchronize: true,
+  ssl: true,
+  logging: true,
+  entities: ["src/models/*.ts"],
+  migrations: ["src/migrations/*.ts"],
+  subscribers: ["src/subscribers/**/*.ts"],
+};
+
+export default { dataSourceOptionsMongoDB, dataSourceOptionsPG };
