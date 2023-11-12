@@ -1,9 +1,18 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  ObjectIdColumn,
+  ObjectId,
+} from "typeorm";
 import { Course } from "./course.model";
-import { Student } from "./student.model";
 
 @Entity()
 export class Grade {
+  @ObjectIdColumn()
+  id!: ObjectId;
+
   @PrimaryGeneratedColumn()
   grade_id!: number;
 

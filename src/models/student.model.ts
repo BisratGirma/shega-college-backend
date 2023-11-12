@@ -4,11 +4,16 @@ import {
   Column,
   ManyToMany,
   JoinTable,
+  ObjectIdColumn,
+  ObjectId,
 } from "typeorm";
 import { Course } from "./course.model";
 
 @Entity()
 export class Student {
+  @ObjectIdColumn()
+  id!: ObjectId;
+
   @PrimaryGeneratedColumn()
   student_id!: number;
 

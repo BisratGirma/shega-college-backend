@@ -8,7 +8,6 @@ Before starting, ensure you have the following installed:
 
 - Node.js 18 or later and npm
 - Git
-- [Other specific prerequisites if applicable]
 
 ## Getting Started
 
@@ -19,7 +18,7 @@ Before starting, ensure you have the following installed:
    cd shega-college-backend
    ```
 
-2. **Make batch file executable**
+2. **Make batch file executable for linux, if you're using windows run 'install.bat' with admin privilege**
 
    ```Terminal
    chmod +x install.sh
